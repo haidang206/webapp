@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./stylesheets/trangchu.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  </head>
+  <body>
+    
+        <div class="header" >
+          <div class="menu">
+            <a href="/trangchu">Trang chủ</a>
+            <a href="#login-box" id="login">Đăng Nhập</a>
+            <a href="#regis-box" id="regis">Đăng ký</a>
+            <a href="/thembai" class="vietbai" href="" style="display: none">Viết bài</a>
+            
+        </div>
+        </div>
+          
+      <div style="background: gray">
+                
+                <section class="featured container clearfix " style="background: white">
+                                <article>
+                                    <div>
+                                            <a class="big_image" href="https://vnexpress.net/tin-tuc/thoi-su/doanh-nhan-thai-binh-chi-hon-10-ty-dong-tau-ngam-truong-sa-2-3806859.html" title="Doanh nhân thái bình chi hơn 10 tỷ">
+                                                <img class="img" src="<%= data[0].anh %>" alt="Doanh nhân thái bình chi hơn 10 tỷ">
+                                            </a>
+                                    </div>
+                                    <h1 class="title_news">
+                                            <a href="https://vnexpress.net/tin-tuc/thoi-su/doanh-nhan-thai-binh-chi-hon-10-ty-dong-tau-ngam-truong-sa-2-3806859.html" title="">
+                                                <%= data[0].title %> </a>
+                                    </h1>
+                                    <h2 class="description">
+                                                <%= data[0].subtitle %> </h2>
+                                </article>
+                               
+                                <div class="sub_featured has_banner  ">
+                                        <div class="scroll-wrapper scrollbar-inner home_scroll clearfix" style="position: relative;">
+                                       
+                                                <ul id="list_sub_featured" class="scrollbar-inner home_scroll scroll-content scroll-scrollx_visible scroll-scrolly_visible"  data-component-function="scrollBox"  style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 600px">
+                                                <% data.forEach(function(motsanpham){ %>
+                                                        <li>
+                                                                <a title="n" href="https://vnexpress.net/photo/dai-hoc/9-truong-quan-doi-tuyen-bo-sung-sinh-vien-3806995.html">
+                                                                        <%= motsanpham.title %> </a>
+                                                        </li>
+                                                 <% })%>         
+                                                       
+                                                </ul>
+                                        
+                                                <div class="scroll-element scroll-x scroll-scrollx_visible scroll-scrolly_visible">
+                                                                <div class="scroll-element_outer">
+                                                                        <div class="scroll-element_size"></div>
+                                                                        <div class="scroll-element_track"></div>
+                                                                        <div class="scroll-bar" style="width: 77px; left: 0px;"></div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="scroll-element scroll-y scroll-scrollx_visible scroll-scrolly_visible" >
+                                                                <div class="scroll-element_outer">
+                                                                        <div class="scroll-element_size"></div>
+                                                                        <div class="scroll-element_track"></div>
+                                                                        <div class="scroll-bar" style="height: 101px; top: 0px;">
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                        </div>
+                                       
+                        </div>
+                                       
+                        </section>
+                        
+                        <section class="container clearfix" style="background: white">
+                                <section class="sider_1"> 
+                                <% data.forEach(function(motsanpham){ %>
+                                        <% if(motsanpham.tag == "Thời sự") {%>
+                                        <article class="list_news1">
+                                                <h3 class="title_news">
+                                                <a href="">
+                                                        <%= motsanpham.title %> </a>
+                                                </h3>
+                                                <div class="thumb_art">
+                                                <a class="thumb thumb_5x3" href="/chitiet.<%= motsanpham._id %>" title="<%= motsanpham.title %>">
+                                                <img src="<%= motsanpham.anh[0] %> " alt="">
+                                                </a>
+                                                </div>
+                                                <h4 class="description">
+                                                <%= motsanpham.subtitle %>
+                                         </h4>
+                                        </article>                
+                                       
+                                <% 
+                                }
+                                })%>                
+                                </section>
+                                <!-- sider_1 -->
+                                <section class="sider_2">
+                                <% data.forEach(function(motsanpham){ %>
+                                        <% if(motsanpham.tag == "Thể thao") {%>
+                                                <article class="list_news2">
+                                                        <h3 class="title_news">
+                                                        <a href="/chitiet.<%= motsanpham._id %>" title="Bộ Giao thông bổ sung nhiều tuyến cao tốc mới vào quy hoạch">
+                                                                <%= motsanpham.title %> </a>
+                                                        </h3>
+                                                        <div class="thumb_art">
+                                                        <a class="thumb thumb_5x3" href="/chitiet.<%= motsanpham._id %>" title="Bộ Giao thông bổ sung nhiều tuyến cao tốc mới vào quy hoạch">
+                                                        <img src="<%= motsanpham.anh[0] %> " alt="Bộ Giao thông bổ sung nhiều tuyến cao tốc mới vào quy hoạch">
+                                                        </a>
+                                                        </div>
+                                                        <h4 class="description">
+                                                        <%= motsanpham.subtitle %> </h4>
+                                                </article>                
+                                               
+                                        <% 
+                                        }
+                                        })%>               
+                                                
+                                </section>
+                        </section>
+                 
+      </div>
+        
+         <!-- container -->
+      
+         <div class="login" id="login-box">Đăng nhập
+                <a class="close" href="#"><img class="img-close" title="Close Window" alt="Close"  /></a>
+                <form class="login-content" action="#" method="post"><label class="username">
+                        <span>Tên hoặc email</span>
+                        <input id="username" type="text" autocomplete="on" name="username" placeholder="Username" value="" />
+                        </label>
+                        <label class="password">
+                        <span>Mật khẩu</span>
+                        <input id="password" type="password" name="password" placeholder="Password" value="" />
+                        </label>
+                        <button class="button submit-button" type="button" id="dangnhap" >Đăng nhập</button>
+                </form>
+        </div>
+         <div class="regis" id="regis-box">Đăng ký
+                <a class="close" href="#"><img class="img-close" title="Close Window" alt="Close"  /></a>
+                <form class="regis-content" action="#" method="post"><label class="username">
+                        <span>Tên hoặc email</span>
+                        <input id="username1" type="text" autocomplete="on" name="username" placeholder="Username" value="" />
+                        </label>
+                        <label class="password">
+                        <span>Mật khẩu</span>
+                        <input id="password1" type="password" name="password" placeholder="Password" value="" />
+                        </label>
+                        <button class="button submit-button" type="button" id="dangky" >Đăng ký</button>
+                </form>
+        </div>
+     
+    
+      
+            
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="./javascripts/login.js"></script>
+    <script src="./javascripts/regis.js"></script>
+  </body>
+</html>

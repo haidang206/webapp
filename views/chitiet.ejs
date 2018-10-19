@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./stylesheets/chitiet.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+   
+  </head>
+  <body>
+      
+      <!-- Social-Plugin -->
+      <!-- <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=558472347940414&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> -->
+      <!---->
+
+      <div class="wrapper" style="background: gray">
+            <div class="header" >
+                    <div class="menu">
+                        <a href="/trangchu">Trang chủ</a>
+                        <a href="/dangnhap">Đăng bài</a>
+                  </div>
+            </div>
+            <section class="container clearfix" style="background: white">
+                <section class="wrap clearfix">
+                        <section class="sider_1 "> 
+                            <% data.forEach(function(motsanpham){ %>
+                                <% if(motsanpham._id == idsanpham) {%>
+                                <article class="list_news">
+                                        <h1 class="title_news_detail mb10">
+                                            <%= motsanpham.title %>
+                                        </h1>
+                                        <h2 class="description">
+                                            <%= motsanpham.subtitle %>
+                                        </h2>
+                                        <article class="content_detail ">
+                                            <img  src="<%= motsanpham.anh[0] %>" data-width="500" data-pwidth="500">
+                                            <p><%= motsanpham.content%></p>
+                                        </article>
+                                </article> 
+                                <% 
+                            }
+                            })%> 
+                            </section>               
+                                
+                        <!-- sider_1 -->
+                        <section class="sider_2 ">
+                                <% data.forEach(function(motsanpham){ %>
+                                    <% if(motsanpham._id != idsanpham && motsanpham.tag == "Thời sự") {%>
+                                        <article class="list_news">
+                                            <h3 class="title_news">
+                                                <a href="/chitiet.<%= motsanpham._id %>" title="Bộ Giao thông bổ sung nhiều tuyến cao tốc mới vào quy hoạch">
+                                                <%= motsanpham.title %> </a>
+                                            </h3>
+                                            <div class="thumb_art">
+                                                <a class="thumb thumb_5x3" href="/chitiet.<%= motsanpham._id %>" title="Bộ Giao thông bổ sung nhiều tuyến cao tốc mới vào quy hoạch">
+                                                <img src="<%= motsanpham.anh[0] %>">
+                                                </a>
+                                            </div>
+                                            <h4 class="description">
+                                                <%= motsanpham.subtitle %>
+                                            </h4>
+                                        </article>                
+                                <% }})%>        
+                        </section>
+                </section>
+                <% data.forEach(function(motsanpham){ %>
+                    <% if(motsanpham._id == idsanpham) {%>
+                <section>
+                    <!-- <input  id="btb" type="button" value="Đăng Nhập" onclick="RequestLoginFB()" style="display: block">
+                    <p id="lbl" style="display: none;"></p> -->
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                    </fb:login-button>
+
+                    <img  hinh="<%= idsanpham %>" id="like" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538774-like_512x512.png" alt="">
+                    <a id="">Có </a> <a id="you" href=""><%= motsanpham.like %></a>
+                    <img hinh="<%= idsanpham %>" id="comment" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-512.png" alt="">
+                    <!-- <div class="fb-share-button" data-href="http://localhost:3000/chitiet.<%= motsanpham._id%>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank"  class="fb-xfbml-parse-ignore">Chia sẻ</a></div> -->
+                    <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox"></div>
+                    <form action="/upcmt">
+                        <div class="form-group">
+                            <input type="" class="form-control" name="title" placeholder="Viết bình luận ...">
+                          </div>
+                    </form>
+                </section>
+                <% }})%> 
+                <section class="con" >
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card-deck" style="float: left;">
+                                    <% data.forEach(function(motsanpham){ %>
+                                        <% if(motsanpham._id != idsanpham && motsanpham.tag == "Thể thao") {%>
+                                        <div class="haha">
+                                            <a href="/chitiet.<%= motsanpham._id %>"><img class="card-img-top" src="<%= motsanpham.anh[0] %>" alt=""></a> 
+                                            <div class="card-body">
+                                                <h4 class="card-title"><%= motsanpham.title %></h4>
+                                                <p class="card-text"><%= motsanpham.subtitle %></p>
+                                            </div>
+                                        </div>
+                                     <% }})%>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                </section>
+            </section>
+           
+      </div>
+        
+     
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script>
+            $(document).ready(function(){
+                $("#like").click(function(){
+                    var id = $(this).attr('hinh');
+                    $.get("http://localhost:3000/like." + id , function(data ){
+                        $('#you').html(data)
+                        
+                    })
+                    $.get("http://localhost:3000/comment." + id , function(data1 ){
+                        
+                        alert(data1)
+                    })
+                    console.log(data)
+                })
+                // $("#comment").click(function(){
+                //     var id = $(this).attr('hinh');
+                    
+                // })
+                // var abc = data + data1
+                // console.log(data2)
+                // $('#like').click ( function(like){
+                //      success: ajax count like
+                //     })
+            })
+           
+    </script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bad1cefad4b5b35"></script>
+  </body>
+</html>
